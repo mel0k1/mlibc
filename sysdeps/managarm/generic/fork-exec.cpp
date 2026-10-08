@@ -69,6 +69,14 @@ int Sysdeps<FutexWake>::operator()(int *pointer, bool all) {
 	return 0;
 }
 
+int Sysdeps<FutexRequeue>::operator()(int *pointer, int expected, int *requeuePointer,
+		unsigned int wakeCount, unsigned int requeueCount) {
+	// This implementation is inherently signal-safe.
+	if (helFutexRequeue(pointer, expected, wakeCount, requeuePointer, requeueCount))
+		return -1;
+	return 0;
+}
+
 int Sysdeps<Waitpid>::operator()(pid_t pid, int *status, int flags, struct rusage *ru, pid_t *ret_pid) {
 	SignalGuard sguard;
 	mlibc::thread_testcancel();

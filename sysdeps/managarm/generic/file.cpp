@@ -2885,10 +2885,11 @@ int Sysdeps<MemfdCreate>::operator()(const char *name, int flags, int *fd) {
 int Sysdeps<Uname>::operator()(struct utsname *buf) {
 	__ensure(buf);
 	mlibc::infoLogger() << "\e[31mmlibc: uname() returns static information\e[39m" << frg::endlog;
-	strcpy(buf->sysname, "Managarm");
-	strcpy(buf->nodename, "managarm");
-	strcpy(buf->release, "0.0.1-rolling");
-	strcpy(buf->version, "Managarm is not Managram");
+	// Nomilia personality: Linux-flavored utsname for Linux software.
+	strcpy(buf->sysname, "Linux");
+	strcpy(buf->nodename, "nomilia");
+	strcpy(buf->release, "6.1.0-nomilia");
+	strcpy(buf->version, "Nomilia 0.0.1 (Linux ABI emulation) #1 SMP");
 #if defined(__x86_64__)
 	strcpy(buf->machine, "x86_64");
 #elif defined(__aarch64__)

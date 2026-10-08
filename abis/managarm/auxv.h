@@ -2,6 +2,7 @@
 #define _ABIBITS_AUXV_H
 
 #define AT_HWCAP 16
+#define AT_CLKTCK 17
 #define AT_SECURE 23
 #define AT_RANDOM 25
 #define AT_EXECFN 31

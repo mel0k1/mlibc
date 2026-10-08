@@ -189,6 +189,7 @@ struct ManagarmSysdepTags :
 	Clone,
 	FutexWait,
 	FutexWake,
+	FutexRequeue,
 	Open,
 	Flock,
 	OpenDir,
